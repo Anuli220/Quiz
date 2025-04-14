@@ -57,14 +57,14 @@ let currentQuestion=0;
 let score=0;
 let incorrectAnswers=[];
 function shuffleArray(array){
-    for(let i = arrayLength-1; i>0; i--)
+    for(let i = array.length-1; i>0; i--)
     {
         const j = Math.floor(Math.random()*(i+1));
         [array[i],array[j]]=[array[j],array[i]];
     }
 }
 
-function displayQuesion(){
+function displayQuestion(){
     const questionData=quizData[currentQuestion];
     // it's targetting the first question.
     const questionElement=document.createElement("div");
@@ -107,7 +107,7 @@ function checkAnswer(){
         currentQuestion++;
         selectedOption.checked=false;
         if(currentQuestion<quizData.length){
-            displayQuesion();
+            displayQuestion();
         }
         else{
             displayResult();
@@ -131,7 +131,7 @@ function retryQuiz(){
     retryButton.style.display="none";
     showAnswerButton.style.display="none";
     resultContainer.innerHTML="";
-    displayQuesion();
+    displayQuestion();
 }
 
 function showAnswer(){
@@ -160,4 +160,4 @@ function showAnswer(){
 submitButton.addEventListener("click",checkAnswer);
 retryButton.addEventListener("click",retryQuiz);
 showAnswerButton.addEventListener("click",showAnswer);
-displayQuesion();
+displayQuestion();
